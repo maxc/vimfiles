@@ -14,6 +14,7 @@ set laststatus=2
 set ignorecase
 set hlsearch
 set encoding=utf-8
+set mouse=a
 
 " for Makefiles: Hard tabs of width 2
 autocmd FileType make set ts=2
