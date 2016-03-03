@@ -1,5 +1,6 @@
 syntax on
 
+set term=xterm-256color
 set nocompatible
 set nowrap
 set backspace=2
@@ -44,6 +45,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'marcopaganini/termschool-vim-theme'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'ervandew/supertab'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -53,6 +55,7 @@ filetype plugin indent on    " required
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 let g:airline_theme='luna'
 colorscheme termschool
