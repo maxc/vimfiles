@@ -10,24 +10,13 @@ set expandtab
 set sw=2
 set sts=2
 set ffs=unix
-set number
 set laststatus=2
 set ignorecase
 set hlsearch
 set encoding=utf-8
 set mouse=a
-
-" for Makefiles: Hard tabs of width 2
-autocmd FileType make set ts=2
-
-" And Markdown
-autocmd FileType mkd set sw=4
-autocmd FileType mkd set sts=4
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.cql set filetype=cql
-
-" And Java
-autocmd FileType java set sw=2
+set number
+set relativenumber
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -51,6 +40,15 @@ Plugin 'ervandew/supertab'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
+
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_use_caching = 0
+  nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  nnoremap \ :Ag<SPACE>
+endif
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
